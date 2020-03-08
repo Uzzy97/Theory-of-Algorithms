@@ -1,3 +1,3 @@
 # Theory-of-Algorithms
 
-Usman Sattar
+by Usman Sattar
