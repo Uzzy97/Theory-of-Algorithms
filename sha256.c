@@ -15,6 +15,15 @@ uint32_t Maj (uint32_t x, uint32_t y, uint32_t z){
   return (x & y) ^ (x & z) ^ (y & z);
 }
 
+uint32_t SHR(uint32_t x, int n){
+  // Section 3.2
+  return x >> n;
+}
+
+uint32_t ROTR(uint32_t x, int n){
+  // Section 3.2
+  return (x >> n) | (x << (32 - n));
+}
 
 int main(int argc, char *argv[]){
 
@@ -29,5 +38,9 @@ int main(int argc, char *argv[]){
 
   printf("Ch (x,y,z)  = %08x\n", Ch(x, y, z));
   printf("Maj (x,y,z) = %08x\n", Maj(x, y, z));
+
+  printf("SHR(x,4)    = %08x\n", SHR(x, 4));
+  printf("ROTR(x,4)   = %08x\n", ROTR(x, 4));
+
   return 0;
 }
