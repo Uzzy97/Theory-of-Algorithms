@@ -3,7 +3,7 @@
 // https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
 // The secure hash algorithm 256-bit verion.
 #include <stdio.h>
-#include <stdint.h>
+#include <inttypes.h>
 
 // Section 4.2.2
 const uint32_t K[] = {
@@ -71,7 +71,7 @@ union block {
   uint8_t eight[64];
 };
 
-enum flag {READ, PAD0, PAD1, FINISH};
+enum flag {READ, PAD0, FINISH};
 
 uint64_t nozerobytes(uint64_t nobits) {
 
@@ -85,24 +85,40 @@ uint64_t nozerobytes(uint64_t nobits) {
   return (result / 8ULL);
 }
 
-int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status){
+int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status) {
+
+  if (*status == FINISH)
+    return 0;
+
+  if (*status == PAD0) {
+    for (int i = 0; i < 56; i++)
+      M->eight[i] = 0;
+    M->sixfour[7] = *nobits;
+    *status = FINISH;
+    return 1;
+  }
+
+  size_t nobytesread = fread(M->eight, 1, 64, infile);
+  if (nobytesread == 64)
+    return 1;
+
+  // If we can fit all padding in last block:
+  if (nobytesread < 56) {
+    M->eight[nobytesread] = 0x80;
+    for (int i = nobytesread + 1; i < 56; i++)
+      M->eight[i] = 0;
+    M->sixfour[7] = *nobits;
+    *status = FINISH;
+    return 1;
+  }
   
-  uint8_t i;
-  // reading one byte once from infile
-  for (*nobits = 0, i = 0;  fread(&M.eight[i], 1, 1, infile) == 1; *nobits += 8){
-    // printing value of M
-    printf("%02" PRIx8, M.eight[i]);
-  }  
-  // Bits: 1000 0000
-  printf("%02" PRIx8, 0x80);
-
-  for (uint64_t i = nozerobytes(*nobits); i > 0; i--)
-    printf("%02" PRIx8, 0x00);
-
-  printf("%016" PRIx64 "\n", *nobits);
-
+  // Otherwise we have read between 56 (incl) and 64 (excl) bytes.
+  M->eight[nobytesread] = 0x80;
+  for (int i = nobytesread + 1; i < 64; i++)
+    M->eight[i] = 0;
+  *status = PAD0;
+  return 1;
 }
-
 
 void nexthash(union block *M, uint32_t *H){
   // Section 6.2.2
@@ -116,19 +132,18 @@ void nexthash(union block *M, uint32_t *H){
   for (t = 16; t < 64; t++)
     W[t] = sig1(W[t-2]) + W[t-7] + sig0(W[t-15]) + W[t-16];
 
-  a = H[0]; b = H[1]; c = H[2]; d = h[3];
+  a = H[0]; b = H[1]; c = H[2]; d = H[3];
   e = H[4]; f = H[5]; g = H[6]; h = H[7];
 
   for (t = 0; t < 64; t++) {
-    T1 = h + Sig1(e) + Ch (e, f, g0 + K[t] + W[t];
+    T1 = h + Sig1(e) + Ch (e, f, g) + K[t] + W[t];
     T2 = Sig0(a) + Maj(a, b, c);
     h = g; g = f; f = e; e = d + T1;
     d = c; c = b; b = a; a = T1 + T2;
     
     H[0] = a + H[0]; H[1] = b + H[1]; H[2] = c + H[2]; H[3] = d + H[3];
     H[4] = e + H[4]; H[5] = f + H[5]; H[6] = g + H[6]; H[7] = f + H[7];
-
-    }
+   }
 }
 
 int main(int argc, char *argv[]){
@@ -155,10 +170,10 @@ int main(int argc, char *argv[]){
   uint64_t nobits = 0;
   enum flag status = READ;
   // Read through all of the padded message blocks
-  while (nextblock(&M, infile, nobits, status)) {
+  while (nextblock(&M, infile, &nobits, &status)) {
     // Calculate the next hash value
     // & means address of
-    nexthash(&M, &H);
+    nexthash(&M,  H);
   }
   
   for (int i = 0; i < 8; i++)
