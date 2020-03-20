@@ -73,18 +73,6 @@ union block {
 
 enum flag {READ, PAD0, FINISH};
 
-uint64_t nozerobytes(uint64_t nobits) {
-
-  uint64_t result = 512ULL - (nobits % 512ULL);
-
-  if (result < 65)
-    result += 512;
-
-  result -= 72;
-
-  return (result / 8ULL);
-}
-
 int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status) {
 
   if (*status == FINISH)
@@ -177,7 +165,7 @@ int main(int argc, char *argv[]){
   }
   
   for (int i = 0; i < 8; i++)
-    printf("%02" PRIX32, H[i]);
+    printf("%02" PRIx32, H[i]);
   printf("\n");
   fclose(infile);
 
