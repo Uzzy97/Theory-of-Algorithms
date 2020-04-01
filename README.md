@@ -8,6 +8,7 @@
 * Clone repository on to desktop (**git clone _"https://github.com/Uzzy97/Theory-of-Algorithms.git"_**)
 * Navigate to MD5 File
 
+### What is a MD5 hashing algorithm?
 
 
 ### References:
