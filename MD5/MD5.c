@@ -27,6 +27,14 @@ const uint32_t k[] = {
       };
 
 
+// RORATE_LEFT rotates x left n bits.
+#define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
+
+// F, G, H, I, are basic MD5 functions
+#define F (x, y, z) (((x) & (y)) | ((~x) & (z)))
+#define G(x, y, z) (((x) & (z)) | ((y) & (~z)))
+#define H(x, y, z) ((x) ^ (y) ^ (z))
+#define I(x, y, z) ((y) ^ ((x) | (~z)))
 
 
 
