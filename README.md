@@ -11,6 +11,10 @@
 ### What is a MD5 hashing algorithm?
 
 
+
+![](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Research-Part1.jpeg)
+
+
 ### References:
 * https://github.com/ianmcloughlin/sha256
 * https://www.youtube.com/watch?v=53O9J2J5i14&t=226s#
