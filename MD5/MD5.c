@@ -1,10 +1,30 @@
 // Usman Sattar - G00345816
 // https://tools.ietf.org/html/rfc1321
 
+// Imports
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <inttypes.h>
+
+// Constants For Md5 Transform Routine
+#define S11 7
+#define S12 12
+#define S13 17
+#define S14 22
+#define S21 5
+#define S22 9
+#define S23 14
+#define S24 20
+#define S31 4
+#define S32 11
+#define S33 16
+#define S34 23
+#define S41 6
+#define S42 10
+#define S43 15
+#define S44 21
 
 //Pre-Defined Hash Values (Refer To Link: https://tools.ietf.org/html/rfc1321)
 const uint32_t k[] = {
@@ -63,23 +83,63 @@ const uint32_t k[] = {
  (a) += (b); \
   }
 
-// Contants for MD5 Transform Routine
-#define S11 7
-#define S12 12
-#define S13 17
-#define S14 22
-#define S21 5
-#define S22 9
-#define S23 14
-#define S24 20
-#define S31 4
-#define S32 11
-#define S33 16
-#define S34 23
-#define S41 6
-#define S42 10
-#define S43 15
-#define S44 21
+// Reference: SHA256 Algorithm
+// A sixty-four byte block of memory, accessed with different types.
+union block {
+
+  uint64_t sixfour[8];
+  uint32_t threetwo[16];
+  uint8_t eight [64];
+};
+
+// Padding
+static unsigned char PADDING[64] = {
+    0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  };
+
+// Next Block
+int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status){
+  
+  size_t nobytesread;
+
+  if (*status == FINISH)
+    return 0;
+
+   int i;
+
+   if (*status == PAD0) {
+    for (i = 0; i < 56; i++)
+      M ->eight[i] = 0x00;
+    M->sixfour[7] = *nobits;
+    *status = FINISH;
+    
+    return 1;
+   }
+
+   nobytesread = fread(M->eight, 1, 64, infile);
+   
+    if (nobytesread == 64)
+      return 1;
+
+    if (nobytesread == 56) {
+      M-eight[nobytesread] = 0x80;
+      for (int i = nobytesread + 1; i < 56; i++)
+        M->eight[i] = 0;
+      M->sixfour[7] = *nobits;
+      *status = FINISH;
+
+      return 1;
+     }
+
+     M->eight[nobytesread] = 0x80;
+     for (int i = nobytesread + 1; i < 64; i++)
+       M->eight[i] = 0;
+     *status = PAD0;
+     
+     return 1;
+   }
 
 
 int main(int argc, char *argv[]) {
