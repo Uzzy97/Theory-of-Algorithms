@@ -92,6 +92,8 @@ union block {
   uint8_t eight [64];
 };
 
+enum flag {READ, PAD0, FINISH};
+
 // Padding
 static unsigned char PADDING[64] = {
     0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -143,6 +145,45 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
 
 
 int main(int argc, char *argv[]) {
+
+  if (argc != 2)
+  {
+    printf("Error: expected single filename as argument.\n");
+    return 1;
+  }
+
+  FILE *infile = fopen(argv[1], "rb");
+  if (!infile)
+  {
+    printf("Error: couldn't open file %s.\n", argv[1]);
+    return 1;
+  }
+
+  uint32_t H[] = 
+  {
+    0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
+  };
   
+  union block M;
+  uint64_t nobits = 0;
+  enum flag status = READ;
+
+    // Read through all of the padded message blocks.
+    while (nextblock(&M, infile, &nobits, &status)){
+
+      md_hash(&M, H);
+    }
+
+ printf("\n Hash value of the file with MD5 algorithm\n");
+
+// Print The Hash
+ for (int i = 0; i < 4; i++)
+
+  print("02" PRIX32 "", H[i]);
+
+ printf("\n");
+
+  fclose(infile);
+
   return 0;
 }
