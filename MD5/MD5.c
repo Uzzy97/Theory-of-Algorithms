@@ -51,7 +51,7 @@ const uint32_t k[] = {
 #define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
 // F, G, H, I, are basic MD5 functions
-#define F (x, y, z) (((x) & (y)) | ((~x) & (z)))
+#define F(x, y, z) (((x) & (y)) | ((~x) & (z)))
 #define G(x, y, z) (((x) & (z)) | ((y) & (~z)))
 #define H(x, y, z) ((x) ^ (y) ^ (z))
 #define I(x, y, z) ((y) ^ ((x) | (~z)))
@@ -86,13 +86,14 @@ const uint32_t k[] = {
 // Reference: SHA256 Algorithm
 // A sixty-four byte block of memory, accessed with different types.
 union block {
-
   uint64_t sixfour[8];
   uint32_t threetwo[16];
   uint8_t eight [64];
 };
 
 enum flag {READ, PAD0, FINISH};
+
+typedef unsigned long int UINT4;
 
 // Padding
 static unsigned char PADDING[64] = {
@@ -113,7 +114,7 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
 
    if (*status == PAD0) {
     for (i = 0; i < 56; i++)
-      M ->eight[i] = 0x00;
+      M->eight[i] = 0x00;
     M->sixfour[7] = *nobits;
     *status = FINISH;
     
@@ -126,7 +127,7 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
       return 1;
 
     if (nobytesread == 56) {
-      M-eight[nobytesread] = 0x80;
+      M->eight[nobytesread] = 0x80;
       for (int i = nobytesread + 1; i < 56; i++)
         M->eight[i] = 0;
       M->sixfour[7] = *nobits;
@@ -143,6 +144,94 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
      return 1;
    }
 
+static void md5_hash(union block *M, uint32_t *Hash){
+  
+  uint32_t a, b, c, d;
+  
+  a = Hash[0];
+  b = Hash[1];
+  c = Hash[2];
+  d = Hash[3];
+
+
+  // Round One
+  FF(a, b, c, d, M->threetwo[0], S11,  0xd76aa478);
+  FF(d, a, b, c, M->threetwo[1], S12,  0xe8c7b756);
+  FF(c, d, a, b, M->threetwo[2], S13,  0x242070db);
+  FF(b, c, d, a, M->threetwo[3], S14,  0xc1bdceee);
+  FF(a, b, c, d, M->threetwo[4], S11,  0xf57c0faf);
+  FF(d, a, b, c, M->threetwo[5], S12,  0x4787c62a);
+  FF(c, d, a, b, M->threetwo[6], S13,  0xa8304613);
+  FF(b, c, d, a, M->threetwo[7], S14,  0xfd469501);
+  FF(a, b, c, d, M->threetwo[8], S11,  0x698098d8);
+  FF(d, a, b, c, M->threetwo[9], S12,  0x8b44f7af);
+  FF(c, d, a, b, M->threetwo[10], S13, 0xffff5bb1);
+  FF(b, c, d, a, M->threetwo[11], S14, 0x895cd7be);
+  FF(a, b, c, d, M->threetwo[12], S11, 0x6b901122);
+  FF(d, a, b, c, M->threetwo[13], S12, 0xfd987193);
+  FF(c, d, a, b, M->threetwo[14], S13, 0xa679438e);
+  FF(b, c, d, a, M->threetwo[15], S14, 0x49b40821);
+
+  // Round Two
+  GG(a, b, c, d, M->threetwo[1], S21,  0xf61e2562);
+  GG(d, a, b, c, M->threetwo[6], S22,  0xc040b340);
+  GG(c, d, a, b, M->threetwo[11], S23, 0x265e5a51);
+  GG(b, c, d, a, M->threetwo[0], S24,  0xe9b6c7aa);
+  GG(a, b, c, d, M->threetwo[5], S21,  0xd62f105d);
+  GG(d, a, b, c, M->threetwo[10], S22, 0x2441453);
+  GG(c, d, a, b, M->threetwo[15], S23, 0xd8a1e681);
+  GG(b, c, d, a, M->threetwo[4], S24,  0xe7d3fbc8);
+  GG(a, b, c, d, M->threetwo[9], S21,  0x21e1cde6);
+  GG(d, a, b, c, M->threetwo[14], S22, 0xc33707d6);
+  GG(c, d, a, b, M->threetwo[3], S23,  0xf4d50d87);
+  GG(b, c, d, a, M->threetwo[8], S24,  0x455a14ed);
+  GG(a, b, c, d, M->threetwo[13], S21, 0xa9e3e905);
+  GG(d, a, b, c, M->threetwo[2], S22,  0xfcefa3f8);
+  GG(c, d, a, b, M->threetwo[7], S23,  0x676f02d9);
+  GG(b, c, d, a, M->threetwo[12], S24, 0x8d2a4c8a);
+
+  // Round Three
+  HH(a, b, c, d, M->threetwo[5], S31,  0xfffa3942);
+  HH(d, a, b, c, M->threetwo[8], S32,  0x8771f681);
+  HH(c, d, a, b, M->threetwo[11], S33, 0x6d9d6122);
+  HH(b, c, d, a, M->threetwo[14], S34, 0xfde5380c);
+  HH(a, b, c, d, M->threetwo[1], S31,  0xa4beea44);
+  HH(d, a, b, c, M->threetwo[4], S32,  0x4bdecfa9);
+  HH(c, d, a, b, M->threetwo[7], S33,  0xf6bb4b60);
+  HH(b, c, d, a, M->threetwo[10], S34, 0xbebfbc70);
+  HH(a, b, c, d, M->threetwo[13], S31, 0x289b7ec6);
+  HH(d, a, b, c, M->threetwo[0], S32,  0xeaa127fa);
+  HH(c, d, a, b, M->threetwo[3], S33,  0xd4ef3085);
+  HH(b, c, d, a, M->threetwo[6], S34,  0x4881d05);
+  HH(a, b, c, d, M->threetwo[9], S31,  0xd9d4d039);
+  HH(d, a, b, c, M->threetwo[12], S32, 0xe6db99e5);
+  HH(c, d, a, b, M->threetwo[15], S33, 0x1fa27cf8);
+  HH(b, c, d, a, M->threetwo[2], S34,  0xc4ac5665);
+
+  // Round Four
+  II(a, b, c, d, M->threetwo[0], S41, 0xf4292244);
+  II(d, a, b, c, M->threetwo[7], S42, 0x432aff97);
+  II(c, d, a, b, M->threetwo[14], S43, 0xab9423a7);
+  II(b, c, d, a, M->threetwo[5], S44, 0xfc93a039);
+  II(a, b, c, d, M->threetwo[12], S41, 0x655b59c3);
+  II(d, a, b, c, M->threetwo[3], S42, 0x8f0ccc92);
+  II(c, d, a, b, M->threetwo[10], S43, 0xffeff47d);
+  II(b, c, d, a, M->threetwo[1], S44, 0x85845dd1);
+  II(a, b, c, d, M->threetwo[8], S41, 0x6fa87e4f);
+  II(d, a, b, c, M->threetwo[15], S42, 0xfe2ce6e0);
+  II(c, d, a, b, M->threetwo[6], S43, 0xa3014314);
+  II(b, c, d, a, M->threetwo[13], S44, 0x4e0811a1);
+  II(a, b, c, d, M->threetwo[4], S41, 0xf7537e82);
+  II(d, a, b, c, M->threetwo[11], S42, 0xbd3af235);
+  II(c, d, a, b, M->threetwo[2], S43, 0x2ad7d2bb);
+  II(b, c, d, a, M->threetwo[9], S44, 0xeb86d391);
+
+  Hash[0] += a;
+  Hash[1] += b;
+  Hash[2] += c;
+  Hash[3] += d;
+
+}
 
 int main(int argc, char *argv[]) {
 
@@ -171,7 +260,7 @@ int main(int argc, char *argv[]) {
     // Read through all of the padded message blocks.
     while (nextblock(&M, infile, &nobits, &status)){
 
-      md_hash(&M, H);
+      md5_hash(&M, H);
     }
 
  printf("\n Hash value of the file with MD5 algorithm\n");
@@ -179,7 +268,7 @@ int main(int argc, char *argv[]) {
 // Print The Hash
  for (int i = 0; i < 4; i++)
 
-  print("02" PRIX32 "", H[i]);
+  printf("%02" PRIx32 "", H[i]);
 
  printf("\n");
 
