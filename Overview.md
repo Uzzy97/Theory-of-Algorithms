@@ -21,3 +21,18 @@ The repository contains two folders, SHA256-Algorithm and MD5. The repository al
 
 ###### MD5 Folder
 This folder consists of a file called MD5.c It is written in the C Programming language. Anyone will be able to understand of what is going through within the file as it is thoroughly commented of what each step does within the code. I understand for a junior software developer, it may be difficult to understand. Further within this documentation, the algorithm will be explained with the usage of diagrams.
+
+###### SHA256-Algorithm Folder
+This folder contains all of the work I have completed while conducting this project. The files created in this folder are a run through of Ian McLoughlin's weekly lab videos which were taken place online. I found them very helpful, you can play, pause, rewind back if you find it difficult to understand. Within this folder, we go through the SHA256 algorithm and we also go through padding and understand how padding plays its part in this project.
+
+###### .gitignore File
+The gitignore file is a text file that tells Git which files/folders (or patterns) to ignore in a project. It's usually used to avoid committing transient files from your working directory that aren't useful to other collaborators, such as compilation products, temporary files IDEs create, etc.
+
+###### MIT License
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+
+###### README.md
+A short documentation for the MD5 algorithm. It consists of research and materials which helped to complete this project. It strictly contains details of the MD5 Hashing.
+
+###### Images Folder
+The images folder contains the sketches and diagrams of the MD5 which helped me understand it better. These sketches and diagrams can be viewed in the README.md.
