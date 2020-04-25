@@ -27,7 +27,7 @@
 #define S44 21
 
 //Pre-Defined Hash Values (Refer To Link: https://tools.ietf.org/html/rfc1321)
-const uint32_t k[] = {
+const uint32_t k[64] = {
         0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
         0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
         0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -97,9 +97,10 @@ typedef unsigned long int UINT4;
 
 // Padding
 static unsigned char PADDING[64] = {
-    0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+    5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20,
+    4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
+    6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
   };
 
 // Next Block
@@ -234,6 +235,19 @@ static void md5_hash(union block *M, uint32_t *Hash){
 }
 
 int main(int argc, char *argv[]) {
+  
+  int i;
+  if (argc == 2){
+    printf("List of arguments are: --help\n--test");
+    for (i = 1; i < argc; i++){
+    printf("%s\t", argv[i]);
+    if (strcmp(argv[i], "--help") == 0){
+    printf("This is help arguement");
+    }else{
+    printf("Error");
+    }
+   }
+  }
 
   if (argc != 2)
   {
@@ -263,7 +277,7 @@ int main(int argc, char *argv[]) {
       md5_hash(&M, H);
     }
 
- printf("\n Hash value of the file with MD5 algorithm\n");
+ printf("\nHash value of the file with MD5 algorithm\n");
 
 // Print The Hash
  for (int i = 0; i < 4; i++)
