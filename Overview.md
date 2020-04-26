@@ -36,3 +36,13 @@ A short documentation for the MD5 algorithm. It consists of research and materia
 
 ###### Images Folder
 The images folder contains the sketches and diagrams of the MD5 which helped me understand it better. These sketches and diagrams can be viewed in the README.md.
+___
+##### Run
+This project is runnable on both Linux and Windows operating system. To start of with the project, one can download this project either by downloading the zip folder or through terminal.
+
+**_Clone with HTTPS_**
+1. Copy GitHub project link: `https://github.com/Uzzy97/Theory-of-Algorithms.git`
+2. Open Command Prompt terminal on your device. Choose where you wish to clone the project. I would advice desktop as it is easy to access.
+3. Run the following command: `git clone https://github.com/Uzzy97/Theory-of-Algorithms.git`
+
+**_Download ZIP Folder_**
