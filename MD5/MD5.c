@@ -234,32 +234,12 @@ static void md5_hash(union block *M, uint32_t *Hash){
 
 }
 
-int main(int argc, char *argv[]) {
-  
-  int i;
-  if (argc == 2){
-    printf("List of arguments are: --help\n--test");
-    for (i = 1; i < argc; i++){
-    printf("%s\t", argv[i]);
-    if (strcmp(argv[i], "--help") == 0){
-    printf("This is help arguement");
-    }else{
-    printf("Error");
-    }
-   }
-  }
+static void hashFile(){
 
-  if (argc != 2)
-  {
-    printf("Error: expected single filename as argument.\n");
-    return 1;
-  }
-
-  FILE *infile = fopen(argv[1], "rb");
+   FILE *infile = fopen("empty", "rb");
   if (!infile)
   {
-    printf("Error: couldn't open file %s.\n", argv[1]);
-    return 1;
+    printf("Error: couldn't open file %s.\n");
   }
 
   uint32_t H[] = 
@@ -287,6 +267,47 @@ int main(int argc, char *argv[]) {
  printf("\n");
 
   fclose(infile);
+}
 
-  return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main(int argc, char *argv[]) {
+  
+  int i;
+  if (argc == 2){
+    for (i = 1; i < argc; i++){
+    printf("%s\t", argv[i]);
+    if (strcmp(argv[i], "--help") == 0){
+    printf("This is help arguement");
+    printf("List of arguments are: --help\n--test");
+    }else if(strcmp(argv[i], "--test") == 0){
+
+    printf("TEST");
+    hashFile();
+
+    }else{
+    printf("Error");
+    }
+   }
+  }
+
+  if (argc != 2)
+  {
+    printf("Error: expected single filename as argument.\n");
+   }
 }
