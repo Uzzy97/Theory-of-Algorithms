@@ -46,3 +46,7 @@ This project is runnable on both Linux and Windows operating system. To start of
 3. Run the following command: `git clone https://github.com/Uzzy97/Theory-of-Algorithms.git`
 
 **_Download ZIP Folder_**
+1. Go to GitHub Repository: `https://github.com/Uzzy97/Theory-of-Algorithms`
+2. Top right-hand side you will have an option to Clone or Download, click that and Download Zip
+3. Alternatively, copy and paste this link `https://github.com/Uzzy97/Theory-of-Algorithms/archive/master.zip`. It will automatically start downloading the zip folder.
+
