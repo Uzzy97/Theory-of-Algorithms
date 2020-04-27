@@ -50,3 +50,20 @@ This project is runnable on both Linux and Windows operating system. To start of
 2. Top right-hand side you will have an option to Clone or Download, click that and Download Zip
 3. Alternatively, copy and paste this link `https://github.com/Uzzy97/Theory-of-Algorithms/archive/master.zip`. It will automatically start downloading the zip folder.
 
+**_Instruction To Compile_**
+<br>
+This project was created using VM instance using Google Cloud Platform. This decision was taken becuase we get to learn about instances and how to use them.
+<img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/VM-Instances.PNG">
+<br>
+ - Download project using terminal or by downloading zip folder.
+ - Open through command prompt (terminal)
+ - Direct yourself into the MD5 folder
+   1. `make MD5` (Compiles The Program)
+   2. `./MD5 --test` Runs the Program
+   3. **Outcome:**
+   <img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/MD5-Hash.PNG">
+   
+
+
+
+
