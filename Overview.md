@@ -99,6 +99,11 @@ algorithm.
    
 <a name="ref"></a>
 ##### References
+- https://github.com/ianmcloughlin/sha256<br>
+Weekly lab videos provided by lecturer.
+- https://www.youtube.com/watch?v=53O9J2J5i14&t=226s#<br>
+Explanation of the MD5 algorithm.
+- https://searchsecurity.techtarget.com/definition/MD5
 
 
 
