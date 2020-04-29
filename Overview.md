@@ -86,7 +86,8 @@ In this section, I am going explain the tests which are included within the code
    
 <a name="algo"></a>
 ##### Algorithm
-In this section, we are going to run through the main algorithm(s) within the code. Where appropriate further explanation will be given with diagram(s).
+In this section, we are going to run through the main algorithm(s) within the code. Where appropriate further explanation will be given with diagram(s).<br>
+The MD5 hashing algorithm is a one-way cryptographic feature that accepts an input message of any length and returns a fixed-length digest value to be used to authenticate the original message as the output. The MD5 hash function was originally intended to be used as a secure cryptographic hash algorithm for digital signature authentication. To verify data integrity and prevent unintended data manipulation, MD5 has been deprecated for uses other than as a non-cryptographic checksum. While originally developed as a cryptographic message authentication code algorithm for use on the internet, for use as a cryptographic checksum, MD5 hashing is no longer considered reliable because researchers have demonstrated techniques that can easily produce MD5 collisions on commercial off - the-shelf computers.
 
 ![MD5 Algorithm](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/MD5-Algorithm.jfif)
  - x[ ] -> Some part of P.T (Plain Text)
@@ -117,11 +118,13 @@ Hash functions are not reversible in general. MD5 is a 128-bit hash, and so it m
 - https://github.com/ianmcloughlin/sha256<br>
 Weekly lab videos provided by lecturer.
 - https://www.youtube.com/watch?v=53O9J2J5i14&t=226s#<br>
+Explanation of the MD5 algorithm (31.29 Minute Video).
+- https://searchsecurity.techtarget.com/definition/MD5<br>
 Explanation of the MD5 algorithm.
-- https://searchsecurity.techtarget.com/definition/MD5
-
 - https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/<br>
-Reversing an MD5 hash
+Reversing an MD5 hash<br><br><br><br>
+
+&copy; Written By: Usman Sattar 2020
 
 
 
