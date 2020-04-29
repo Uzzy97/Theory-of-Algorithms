@@ -7,7 +7,8 @@
 **Contact:** G00345816@gmit.ie
 ___
 1. [ Introduction. ](#intro)
-1. [ Run. ](#run)
+2. [ Run. ](#run)
+3. [ Test. ](#test)
 
 <a name="stat"></a>
 #####  Problem Statement
@@ -64,10 +65,20 @@ This project was created using VM instance using Google Cloud Platform. This dec
  - Download project using terminal or by downloading zip folder.
  - Open through command prompt (terminal)
  - Direct yourself into the MD5 folder
-   1. `make MD5` (Compiles The Program)
-   2. `./MD5 --test` Runs the Program
-   3. **Outcome:**
-   <img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/MD5-Hash.PNG">
+ - `make MD5` (Compiles The Program)
+ - `./MD5 --test` Runs the Program
+ 
+ ___
+   
+<a name="test"></a>
+##### Test
+In this section, I am going explain the tests which are included within the code.
+
+| Tests         | Expected Results           | Pass/Fail  |
+| ------------- |:--------------------------:| ----------:|
+| --help        | right-aligned              | PASS       |
+| --test        | centered                   | PASS       |
+
    
 
 
