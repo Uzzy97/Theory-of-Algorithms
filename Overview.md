@@ -9,6 +9,9 @@ ___
 1. [ Introduction. ](#intro)
 2. [ Run. ](#run)
 3. [ Test. ](#test)
+4. [ Algorithm. ](#algo)
+5. [ Complexity. ](#comp)
+6. [ References. ](#ref)
 
 <a name="stat"></a>
 #####  Problem Statement
@@ -78,8 +81,24 @@ In this section, I am going explain the tests which are included within the code
 | ------------- |:--------------------------:| ----------:|
 | --help        | right-aligned              | PASS       |
 | --test        | centered                   | PASS       |
-
+ 
+ ___
    
+<a name="algo"></a>
+##### Algorithm
+In this section, we are going to run through the main algorithm(s) within the code. Where appropriate further explanation will be given with diagram(s).
+ 
+ ___
+   
+<a name="comp"></a>
+##### Complexity
+This is the most important section within the report. You must fully understand of what is happening within this section of complexity. We are going to fully analyse the complexity of the MD5 algorithm, including the complexity of algorithms that attempt to reverse the
+algorithm.
+ 
+ ___
+   
+<a name="ref"></a>
+##### References
 
 
 
