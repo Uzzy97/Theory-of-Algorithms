@@ -87,14 +87,29 @@ In this section, I am going explain the tests which are included within the code
 <a name="algo"></a>
 ##### Algorithm
 In this section, we are going to run through the main algorithm(s) within the code. Where appropriate further explanation will be given with diagram(s).
+
+![MD5 Algorithm](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/MD5-Algorithm.jfif)
+ - x[ ] -> Some part of P.T (Plain Text)
+ ###### Functions (Logical)
+ - F(B, C, D) - (B ^ C) v (>B ^ D)
+ - G(B, C, D) - (B ^ D) v (C ^ > D)
+ - H(B, C, D) - B ⊕ C ⊕ D
+ - I(B, C, D) - C ⊕ (B V > D)
+ 
+ - ⊕ - XOR (Exclusive or)
  
  ___
-   
+     
 <a name="comp"></a>
 ##### Complexity
 This is the most important section within the report. You must fully understand of what is happening within this section of complexity. We are going to fully analyse the complexity of the MD5 algorithm, including the complexity of algorithms that attempt to reverse the
 algorithm.
- 
+
+###### Reversing an MD5 hash
+MD5 was invented in 1992 and the first flaw was discovered in 1996. In 2010 the CMU Software Engineering Institute declared that MD5 was “cryptographically broken and unsuitable for further use.” It’s still being used, though not as much. MD5 still makes a useful checksum, though it’s not cryptographically secure.
+Hash functions are not reversible in general. MD5 is a 128-bit hash, and so it maps any string, no matter how long, into 128 bits.
+
+
  ___
    
 <a name="ref"></a>
@@ -105,6 +120,8 @@ Weekly lab videos provided by lecturer.
 Explanation of the MD5 algorithm.
 - https://searchsecurity.techtarget.com/definition/MD5
 
+- https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/<br>
+Reversing an MD5 hash
 
 
 
