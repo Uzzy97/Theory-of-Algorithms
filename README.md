@@ -40,8 +40,10 @@ The MD5 message digest hashing algorithm processes data in 512-bit blocks, broke
 
 ![](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/MD5-Algorithm.jfif)
 
-
-
+### Project Plan
+<p>Firstly I conducted the research relating to the MD5 Algorithm. Once I was comfortable in understanding how the algorithm worked, I began constructing the program in C Programming Language. I started and completed the project by using the Google Cloud Platform, using a VM Instance.</p>
+<p>Due to Covid-19, there were new arrangements in place. Therefore I needed to restructure my plan. Now the MD5 program must accept command line arguments. While I was working towards completing the project, I had to add in command line argument. There was a new requirement of a report that must be called overview.md in my repository. This Markdown document contains a report on my project, pitched at students in the year below me. 
+ 
 ### References:
 * https://github.com/ianmcloughlin/sha256
 * https://www.youtube.com/watch?v=53O9J2J5i14&t=226s#
