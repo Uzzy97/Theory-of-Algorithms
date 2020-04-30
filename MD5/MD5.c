@@ -237,14 +237,14 @@ static void md5_hash(union block *M, uint32_t *Hash){
 
 static void hashFile(){
   char path[100];
-  printf("\nFile Name: empty");
+  printf("\nFiles To Test:\n1. empty\n2. a\n3. abc\n4. messageDigest\n5. alpha\n6. alphaNum\n7. num");
   printf("\nEnter File Name:");
   scanf("%99s", path);
-  FILE *infile = fopen("empty", "rb");
+  FILE *infile = fopen(path, "rb");
 
   if (!infile)
   {
-    printf("Error: couldn't open file %s.\n");
+    printf("Error: couldn't open file %s.\n", path);
   }
 
   uint32_t H[] = 
