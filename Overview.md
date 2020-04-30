@@ -76,7 +76,23 @@ This project was created using VM instance using Google Cloud Platform. This dec
    
 <a name="test"></a>
 ##### Test
-In this section, I am going explain the tests which are included within the code.
+In this section, we go through the different tests that are being carried out. The `./MD5 --test` offers the user to enter a file name that they wish to test. There are some test files already created, you may go ahead and test them out. User can also create their own test files and run them to see the outcome.
+
+###### List of Files Already Created
+1. <b>empty</b> ("")<br>
+The output should be: **_d41d8cd98f00b204e9800998ecf8427e_**<br>
+2. <b>a</b> ("a")<br>
+The output should be: **_0cc175b9c0f1b6a831c399e269772661_**<br>
+3. <b>abc</b> ("abc")<br>
+The output should be: **_900150983cd24fb0d6963f7d28e17f72_**<br>
+4. <b>messageDigest</b>("message digest")<br>
+The output should be: **_f96b697d7cb7938d525a2f31aaf161d0_**<br>
+5. <b>alpha</b> ("abcdefghijklmnopqrstuvwxyz")<br>
+The output should be: **_c3fcd3d76192e4007dfb496cca67e13b_**<br>
+6. <b>alphaNum</b> ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")<br>
+The output should be: **_d174ab98d277d9f5a5611c2c9f419d9f_**<br>
+7. <b>num</b> ("12345678901234567890123456789012345678901234567890123456789012345678901234567890")<br>
+The output should be: **_57edf4a22be3c955ac49da2e2107b67a_**<br><br>
 
 | Tests | Expected Results | Pass/Fail  |
 | :---: |:---:| :---: |
@@ -143,12 +159,12 @@ Explanation of the MD5 algorithm (31.29 Minute Video).
 - https://searchsecurity.techtarget.com/definition/MD5<br>
 Explanation of the MD5 algorithm.
 - https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/<br>
-Reversing an MD5 hash<br><br><br><br>
+Reversing an MD5 hash
+- https://tools.ietf.org/html/rfc1321
+MD5 Message-Digest Algorithm
 - https://stackoverflow.com/questions/2948156/algorithm-complexity-security-md5-or-sha1/37235104<br>
-Algorithm complexity and security
+Algorithm complexity and security<br><br><br><br>
+
 
 
 &copy; Written By: Usman Sattar 2020
-
-
-
