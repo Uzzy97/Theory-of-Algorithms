@@ -136,8 +136,15 @@ The MD5 hashing algorithm is a one-way cryptographic feature that accepts an inp
      
 <a name="comp"></a>
 ##### Complexity
-This is the most important section within the report. You must fully understand of what is happening within this section of complexity. We are going to fully analyse the complexity of the MD5 algorithm, including the complexity of algorithms that attempt to reverse the
-algorithm.
+<p>This is the most important section within the report. You must fully understand of what is happening within this section of complexity. We are going to fully analyse the complexity of the MD5 algorithm, including the complexity of algorithms that attempt to reverse the algorithm.</p>
+
+### What The Code Consists?
+<p>First we add in the necessary imports needed. Than Constants For Md5 Transform Routine are defined, these are used in the FF, GG, HH, II functions. Next we have the 64 pre-defined hash values which also get called in the FF, GG, HH, II values. Following the pre-defined hash values, we have a union block, which is a sixty-four byte block of memory, accessed with different types. The nextblock method goes through if statements. First we check if the status is equal to finish. Then, if the status is equal to PAD0 we then need an all-padding block without the one bit. Change status to finsh and return 1.</p>
+<p>We test that at the end of this we can apply all the padding in the last block if statement changes status to PAD0 and returns 1.
+Each transformation is called 16 times starting with round 1: FF, round 2: GG, round 3: HH and round 4: II
+The next feature present in this program is the writeToFile feature in which chars are transferred.</p>
+We have a hashFile() method, in this method we test out the different tests available. User in asked to enter a file name from the options and the result will be printed out. If there is no file available to access, an error message is printed out to the user.
+Finally, the last method is the main method. In the main method we are writing out command line arguments. The two command line arguments included in the program are --help and --test
 
 ###### Comparison
 | Keys For Comparison | MD5 | SHA |
@@ -153,8 +160,6 @@ algorithm.
 ###### Reversing an MD5 hash
 MD5 was invented in 1992 and the first flaw was discovered in 1996. In 2010 the CMU Software Engineering Institute declared that MD5 was “cryptographically broken and unsuitable for further use.” It’s still being used, though not as much. MD5 still makes a useful checksum, though it’s not cryptographically secure.
 Hash functions are not reversible in general. MD5 is a 128-bit hash, and so it maps any string, no matter how long, into 128 bits.
-
-
  ___
    
 <a name="ref"></a>
@@ -167,7 +172,7 @@ Explanation of the MD5 algorithm (31.29 Minute Video).
 Explanation of the MD5 algorithm.
 - https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/<br>
 Reversing an MD5 hash
-- https://tools.ietf.org/html/rfc1321
+- https://tools.ietf.org/html/rfc1321<br>
 MD5 Message-Digest Algorithm
 - https://www.md5hashgenerator.com/<br>
 To test for correct hash value
