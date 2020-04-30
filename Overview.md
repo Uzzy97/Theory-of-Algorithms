@@ -79,19 +79,19 @@ This project was created using VM instance using Google Cloud Platform. This dec
 In this section, we go through the different tests that are being carried out. The `./MD5 --test` offers the user to enter a file name that they wish to test. There are some test files already created, you may go ahead and test them out. User can also create their own test files and run them to see the outcome.
 
 ###### List of Files Already Created
-1. <b>empty</b> ("")<br>
-The output should be: **_d41d8cd98f00b204e9800998ecf8427e_**<br>
-2. <b>a</b> ("a")<br>
-The output should be: **_0cc175b9c0f1b6a831c399e269772661_**<br>
-3. <b>abc</b> ("abc")<br>
-The output should be: **_900150983cd24fb0d6963f7d28e17f72_**<br>
-4. <b>messageDigest</b>("message digest")<br>
-The output should be: **_f96b697d7cb7938d525a2f31aaf161d0_**<br>
-5. <b>alpha</b> ("abcdefghijklmnopqrstuvwxyz")<br>
-The output should be: **_c3fcd3d76192e4007dfb496cca67e13b_**<br>
-6. <b>alphaNum</b> ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")<br>
-The output should be: **_d174ab98d277d9f5a5611c2c9f419d9f_**<br>
-7. <b>num</b> ("12345678901234567890123456789012345678901234567890123456789012345678901234567890")<br>
+<br>1. <b>empty</b> ("")<br>
+The output should be: **_d41d8cd98f00b204e9800998ecf8427e_**<br><br>
+<br>2. <b>a</b> ("a")<br>
+The output should be: **_0cc175b9c0f1b6a831c399e269772661_**<br><br>
+<br>3. <b>abc</b> ("abc")<br>
+The output should be: **_900150983cd24fb0d6963f7d28e17f72_**<br><br>
+<br>4. <b>messageDigest</b>("message digest")<br>
+The output should be: **_f96b697d7cb7938d525a2f31aaf161d0_**<br><br>
+<br>5. <b>alpha</b> ("abcdefghijklmnopqrstuvwxyz")<br>
+The output should be: **_c3fcd3d76192e4007dfb496cca67e13b_**<br><br>
+<br>6. <b>alphaNum</b> ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")<br>
+The output should be: **_d174ab98d277d9f5a5611c2c9f419d9f_**<br><br>
+<br>7. <b>num</b> ("12345678901234567890123456789012345678901234567890123456789012345678901234567890")<br>
 The output should be: **_57edf4a22be3c955ac49da2e2107b67a_**<br><br>
 
 | Tests | Expected Results | Pass/Fail  |
