@@ -70,7 +70,8 @@ This project was created using VM instance using Google Cloud Platform. This dec
  - Direct yourself into the MD5 folder
  - `make MD5` (Compiles the program)
  - `./MD5 --help` Information regarding the program and instructions to run the program
- - `./MD5 --test` Runs the program, takes in a string and converts it into hash
+ - `./MD5 --test` Runs the program, takes in a string and converts it into hash<br>
+When the above command is run, user will be asked to enter file name. A list of file name will be printed out to input. The consistency of each file is below in the test section.
  
  ___
    
