@@ -63,13 +63,14 @@ This project is runnable on both Linux and Windows operating system. To start of
 **_Instruction To Compile_**
 <br>
 This project was created using VM instance using Google Cloud Platform. This decision was taken becuase we get to learn about instances and how to use them.
-<img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/VM-Instances.PNG">
+<img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/VM-Instances.PNG">
 <br>
  - Download project using terminal or by downloading zip folder.
  - Open through command prompt (terminal)
  - Direct yourself into the MD5 folder
- - `make MD5` (Compiles The Program)
- - `./MD5 --test` Runs the Program
+ - `make MD5` (Compiles the program)
+ - `./MD5 --help` Information regarding the program and instructions to run the program
+ - `./MD5 --test` Runs the program, takes in a string and converts it into hash
  
  ___
    
@@ -77,10 +78,10 @@ This project was created using VM instance using Google Cloud Platform. This dec
 ##### Test
 In this section, I am going explain the tests which are included within the code.
 
-| Tests         | Expected Results           | Pass/Fail  |
-| ------------- |:--------------------------:| ----------:|
-| --help        | right-aligned              | PASS       |
-| --test        | centered                   | PASS       |
+| Tests | Expected Results | Pass/Fail  |
+| :---: |:---:| :---: |
+| --help | Gives a message to the user regarding on the program and instructions on how to compile | PASS |
+| --test | Given an output of the result to the user | PASS |
  
  ___
    
@@ -89,8 +90,9 @@ In this section, I am going explain the tests which are included within the code
 In this section, we are going to run through the main algorithm(s) within the code. Where appropriate further explanation will be given with diagram(s).<br>
 The MD5 hashing algorithm is a one-way cryptographic feature that accepts an input message of any length and returns a fixed-length digest value to be used to authenticate the original message as the output. The MD5 hash function was originally intended to be used as a secure cryptographic hash algorithm for digital signature authentication. To verify data integrity and prevent unintended data manipulation, MD5 has been deprecated for uses other than as a non-cryptographic checksum. While originally developed as a cryptographic message authentication code algorithm for use on the internet, for use as a cryptographic checksum, MD5 hashing is no longer considered reliable because researchers have demonstrated techniques that can easily produce MD5 collisions on commercial off - the-shelf computers.
 
-![MD5 Algorithm](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/MD5-Algorithm.jfif)
+![MD5 Algorithm](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/MD5-Algorithm.jfif)
  - x[ ] -> Some part of P.T (Plain Text)
+ - MD - > Output message digest
  ###### Functions (Logical)
  - F(B, C, D) - (B ^ C) v (>B ^ D)
  - G(B, C, D) - (B ^ D) v (C ^ > D)
@@ -99,12 +101,31 @@ The MD5 hashing algorithm is a one-way cryptographic feature that accepts an inp
  
  - ⊕ - XOR (Exclusive or)
  
+  ###### MD5 Steps
+  The following five steps are preformed to compute the message digest of the message.
+  1. Append padding bits
+  2. Append Length
+  3. Initialize MD Buffer
+  4. Process message in 16-word blocks
+  5. Output
+ 
  ___
      
 <a name="comp"></a>
 ##### Complexity
 This is the most important section within the report. You must fully understand of what is happening within this section of complexity. We are going to fully analyse the complexity of the MD5 algorithm, including the complexity of algorithms that attempt to reverse the
 algorithm.
+
+###### Comparison
+| Keys For Comparison | MD5 | SHA |
+| :---:         |     :---:      |          :---: |
+| Security   | Less Secure Than SHA     | High Secure Than MD5    |
+| Message Digest Length     | 128 Bits       | 160 Bits      |
+| Attacks Required To Find Out Original Message| 2(128) Bit Operations Required To Break|2(160) Bit Operations Required To Break|
+| Attacks To Try And Find Two Messages Producing The Same MD| 2(64) Bit Operations Required To Break|2(80) Bit Operations Required To Break|
+| Speed | Faster, Only 64 Iterations| Slower Than MD5, Required 80 Iterations|
+| Successful Attacks So Far | Attacks Reported To Some Extents| No Such Attack Report Yet|
+
 
 ###### Reversing an MD5 hash
 MD5 was invented in 1992 and the first flaw was discovered in 1996. In 2010 the CMU Software Engineering Institute declared that MD5 was “cryptographically broken and unsuitable for further use.” It’s still being used, though not as much. MD5 still makes a useful checksum, though it’s not cryptographically secure.
@@ -123,6 +144,9 @@ Explanation of the MD5 algorithm (31.29 Minute Video).
 Explanation of the MD5 algorithm.
 - https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/<br>
 Reversing an MD5 hash<br><br><br><br>
+- https://stackoverflow.com/questions/2948156/algorithm-complexity-security-md5-or-sha1/37235104<br>
+Algorithm complexity and security
+
 
 &copy; Written By: Usman Sattar 2020
 
