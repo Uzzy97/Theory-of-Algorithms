@@ -90,8 +90,9 @@ In this section, I am going explain the tests which are included within the code
 In this section, we are going to run through the main algorithm(s) within the code. Where appropriate further explanation will be given with diagram(s).<br>
 The MD5 hashing algorithm is a one-way cryptographic feature that accepts an input message of any length and returns a fixed-length digest value to be used to authenticate the original message as the output. The MD5 hash function was originally intended to be used as a secure cryptographic hash algorithm for digital signature authentication. To verify data integrity and prevent unintended data manipulation, MD5 has been deprecated for uses other than as a non-cryptographic checksum. While originally developed as a cryptographic message authentication code algorithm for use on the internet, for use as a cryptographic checksum, MD5 hashing is no longer considered reliable because researchers have demonstrated techniques that can easily produce MD5 collisions on commercial off - the-shelf computers.
 
-![MD5 Algorithm](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/MD5-Algorithm.jfif)
+![MD5 Algorithm](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/MD5-Algorithm.jfif)
  - x[ ] -> Some part of P.T (Plain Text)
+ - MD - > Output message digest
  ###### Functions (Logical)
  - F(B, C, D) - (B ^ C) v (>B ^ D)
  - G(B, C, D) - (B ^ D) v (C ^ > D)
@@ -99,6 +100,14 @@ The MD5 hashing algorithm is a one-way cryptographic feature that accepts an inp
  - I(B, C, D) - C ⊕ (B V > D)
  
  - ⊕ - XOR (Exclusive or)
+ 
+  ###### MD5 Steps
+  The following five steps are preformed to compute the message digest of the message.
+  1. Append padding bits
+  2. Append Length
+  3. Initialize MD Buffer
+  4. Process message in 16-word blocks
+  5. Output
  
  ___
      
