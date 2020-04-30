@@ -234,9 +234,14 @@ static void md5_hash(union block *M, uint32_t *Hash){
 
 }
 
-static void hashFile(){
 
-   FILE *infile = fopen("empty", "rb");
+static void hashFile(){
+  char path[100];
+  printf("\nFile Name: empty");
+  printf("\nEnter File Name:");
+  scanf("%99s", path);
+  FILE *infile = fopen("empty", "rb");
+
   if (!infile)
   {
     printf("Error: couldn't open file %s.\n");
@@ -257,7 +262,7 @@ static void hashFile(){
       md5_hash(&M, H);
     }
 
- printf("\nHash value of the file with MD5 algorithm\n");
+ printf("\nHash value of the file with MD5 algorithm:\n");
 
 // Print The Hash
  for (int i = 0; i < 4; i++)
@@ -270,42 +275,34 @@ static void hashFile(){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main(int argc, char *argv[]) {
-  
   int i;
   if (argc == 2){
-    for (i = 1; i < argc; i++){
-    printf("%s\t", argv[i]);
-    if (strcmp(argv[i], "--help") == 0){
-    printf("This is help arguement");
-    printf("List of arguments are: --help\n--test");
-    }else if(strcmp(argv[i], "--test") == 0){
 
-    printf("TEST");
+  for (i = 1; i < argc; i++){
+  printf("%s\t", argv[i]);
+  
+  if (strcmp(argv[i], "--help") == 0){
+
+    printf("\n\n***MD5 Hashing Algorithm***");
+    printf("\nThis application outputs the hash value of a string.\nThis task is completed by reading in a file provided with this application.");
+    printf("\nSimply use the --test comand. This runs the .txt file.");
+    printf("\n\nList of arguments are:\n--help\n--test\n\n");
+    printf("HOW TO RUN:");
+    printf("\n1. Compile The Program: 'make MD5'");
+    printf("\n2. Run The Program: './MD5 --test'" );
+    printf("\nEnter File Name: empty");
+    printf("\nWait For Program To Compile and Output Result\n");
+    
+  }else if(strcmp(argv[i], "--test") == 0){
+
     hashFile();
 
-    }else{
+  }else{
     printf("Error");
     }
    }
   }
-
   if (argc != 2)
   {
     printf("Error: expected single filename as argument.\n");
