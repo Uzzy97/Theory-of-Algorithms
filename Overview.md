@@ -78,10 +78,10 @@ This project was created using VM instance using Google Cloud Platform. This dec
 ##### Test
 In this section, I am going explain the tests which are included within the code.
 
-| Tests         | Expected Results           | Pass/Fail  |
-| ------------- |:--------------------------:| ----------:|
-| --help        | Gives a message to the user regarding on the program and instructions on how to compile | PASS       |
-| --test        | Given an output of the result to the user                   | PASS       |
+| Tests | Expected Results | Pass/Fail  |
+| :---: |:---:| :---: |
+| --help | Gives a message to the user regarding on the program and instructions on how to compile | PASS |
+| --test | Given an output of the result to the user | PASS |
  
  ___
    
@@ -116,6 +116,17 @@ The MD5 hashing algorithm is a one-way cryptographic feature that accepts an inp
 This is the most important section within the report. You must fully understand of what is happening within this section of complexity. We are going to fully analyse the complexity of the MD5 algorithm, including the complexity of algorithms that attempt to reverse the
 algorithm.
 
+###### Comparison
+| Keys For Comparison | MD5 | SHA |
+| :---:         |     :---:      |          :---: |
+| Security   | Less Secure Than SHA     | High Secure Than MD5    |
+| Message Digest Length     | 128 Bits       | 160 Bits      |
+| Attacks Required To Find Out Original Message| 2(128) Bit Operations Required To Break|2(160) Bit Operations Required To Break|
+| Attacks To Try And Find Two Messages Producing The Same MD| 2(64) Bit Operations Required To Break|2(80) Bit Operations Required To Break|
+| Speed | Faster, Only 64 Iterations| Slower Than MD5, Required 80 Iterations|
+| Successful Attacks So Far | Attacks Reported To Some Extents| No Such Attack Report Yet|
+
+
 ###### Reversing an MD5 hash
 MD5 was invented in 1992 and the first flaw was discovered in 1996. In 2010 the CMU Software Engineering Institute declared that MD5 was “cryptographically broken and unsuitable for further use.” It’s still being used, though not as much. MD5 still makes a useful checksum, though it’s not cryptographically secure.
 Hash functions are not reversible in general. MD5 is a 128-bit hash, and so it maps any string, no matter how long, into 128 bits.
@@ -133,6 +144,9 @@ Explanation of the MD5 algorithm (31.29 Minute Video).
 Explanation of the MD5 algorithm.
 - https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/<br>
 Reversing an MD5 hash<br><br><br><br>
+- https://stackoverflow.com/questions/2948156/algorithm-complexity-security-md5-or-sha1/37235104<br>
+Algorithm complexity and security
+
 
 &copy; Written By: Usman Sattar 2020
 
