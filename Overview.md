@@ -96,8 +96,14 @@ The output should be: **_57edf4a22be3c955ac49da2e2107b67a_**<br><br>
 
 | Tests | Expected Results | Pass/Fail  |
 | :---: |:---:| :---: |
-| --help | Gives a message to the user regarding on the program and instructions on how to compile | PASS |
-| --test | Given an output of the result to the user | PASS |
+| Hash Output | Output should match as above | FAIL |
+| Wong File Name | Couldn't open file | PASS |
+| Invalid Argument | Invalid Command | PASS |
+| No Argument | Expects Argument | PASS |
+| --help | Information for user to follow | PASS |
+| --test | Prompts user to enter file name | PASS |
+
+To test if result is correct, refer to: https://www.md5hashgenerator.com
  
  ___
    
@@ -162,6 +168,8 @@ Explanation of the MD5 algorithm.
 Reversing an MD5 hash
 - https://tools.ietf.org/html/rfc1321
 MD5 Message-Digest Algorithm
+- https://www.md5hashgenerator.com/<br>
+To test for correct hash value
 - https://stackoverflow.com/questions/2948156/algorithm-complexity-security-md5-or-sha1/37235104<br>
 Algorithm complexity and security<br><br><br><br>
 
