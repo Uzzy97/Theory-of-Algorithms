@@ -20,7 +20,6 @@ This project is runnable on both Linux and Windows operating system. To start of
 **_Instruction To Compile_**
 <br>
 This project was created using VM instance using Google Cloud Platform. This decision was taken becuase we get to learn about instances and how to use them.
-<img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/VM-Instances.PNG">
 <br>
  - Download project using terminal or by downloading zip folder.
  - Open through command prompt (terminal)
@@ -39,7 +38,7 @@ The MD5 hashing algorithm is a one-way cryptographic feature that accepts an inp
 ### How MD5 Works
 The MD5 message digest hashing algorithm processes data in 512-bit blocks, broken down into 16 words composed of 32 bits each. The output from MD5 is a 128-bit message digest value.
 
-![](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/Research-Part1.jpeg)
+![](https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/MD5-Algorithm.jfif)
 
 
 
