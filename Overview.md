@@ -63,13 +63,14 @@ This project is runnable on both Linux and Windows operating system. To start of
 **_Instruction To Compile_**
 <br>
 This project was created using VM instance using Google Cloud Platform. This decision was taken becuase we get to learn about instances and how to use them.
-<img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/VM-Instances.PNG">
+<img align="left" src="https://github.com/Uzzy97/Theory-of-Algorithms/blob/master/Images/VM-Instances.PNG">
 <br>
  - Download project using terminal or by downloading zip folder.
  - Open through command prompt (terminal)
  - Direct yourself into the MD5 folder
- - `make MD5` (Compiles The Program)
- - `./MD5 --test` Runs the Program
+ - `make MD5` (Compiles the program)
+ - `./MD5 --help` Information regarding the program and instructions to run the program
+ - `./MD5 --test` Runs the program, takes in a string and converts it into hash
  
  ___
    
@@ -79,8 +80,8 @@ In this section, I am going explain the tests which are included within the code
 
 | Tests         | Expected Results           | Pass/Fail  |
 | ------------- |:--------------------------:| ----------:|
-| --help        | right-aligned              | PASS       |
-| --test        | centered                   | PASS       |
+| --help        | Gives a message to the user regarding on the program and instructions on how to compile | PASS       |
+| --test        | Given an output of the result to the user                   | PASS       |
  
  ___
    
